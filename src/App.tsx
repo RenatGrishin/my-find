@@ -53,7 +53,7 @@ function App(props:any) {
           <Route exact path={'/'} render={()=><Main/>} />
           <MyCardsContext.Provider value={myCards}>
             <Route exact path={'/myCards'} component={()=><MyCards/>} />
-            <Route path={'/myCards/card/:number'} component={EditCard} />
+            <Route path={'/myCards/card/:number'} render={props=><EditCard props={props}/>} />
           </MyCardsContext.Provider>
         </Switch>
       </main>

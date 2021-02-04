@@ -2,6 +2,7 @@ import React from "react";
 
 function EditCard (props:any){
   console.log(props)
+  debugger
   return<div>
     <h3>Назад</h3>
     <div>
