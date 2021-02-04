@@ -1,0 +1,34 @@
+.main{
+  font-family: Helvetica;
+}
+
+.head{
+  width: 100%;
+  height: 60px;
+  padding: 25px;
+  background-color: gainsboro;
+}
+
+.profile{
+  position: relative;
+}
+.avatar{
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid #000;
+  display: block;
+}
+.name{
+  top: 10px;
+  left: 105px;
+  position: absolute;
+  font-weight: lighter;
+  line-height: 1.5;
+}
+
+.menu{
+  position: absolute;
+  right: 25px;
+}

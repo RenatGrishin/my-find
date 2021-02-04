@@ -1,0 +1,24 @@
+.main{
+    display: grid;
+    grid-template:
+    'a   a   b   b   c   c'  1fr
+    'd   d   d   e   e   e'  1fr
+    /1fr 1fr 1fr 1fr 1fr 1fr
+    ;
+}
+
+.my_stuff{
+    grid-area: a;
+}
+.my_maybe{
+    grid-area: b;
+}
+.chat{
+    grid-area: c;
+}
+.i_lost{
+    grid-area: d;
+}
+.i_find{
+    grid-area: e;
+}
