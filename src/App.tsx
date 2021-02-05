@@ -24,9 +24,7 @@ export const MyCardsContext = React.createContext({allCards:[{
     cardName: "",
     cardNumb: "",
     cardMonth: 0,
-    cardYear: 0,
-    maybeOwner: [],
-    owner: 0
+    cardYear: 0
   }}
 );
 
