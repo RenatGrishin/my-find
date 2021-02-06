@@ -4,10 +4,16 @@ import {Link} from "react-router-dom";
 
 function EditCard (props:any){
   const myCard = useContext(MyCardsContext);
-  const [cardInfo, setCardInfo] = useState(myCard.editCard);
+  let [cardInfo, setCardInfo] = useState(myCard.editCard);
   const cardIdURL = Number(props.props.match.params.number);
+  console.log(props)
 
-  /* Создаем карточку для резактирования */
+  /*
+  Исправить ошибку с сохранением данными о карте.
+  сейчас изменения хранятся в cardInfo,  надо чтоб оно хранилось в props.myCard.editCard
+  */
+
+  /* Создаем карточку для редактирования */
   function instCardInfo (){
     let newInfo = myCard.allCards.find(card => card.id === cardIdURL);
     if (newInfo === undefined) {
@@ -21,15 +27,17 @@ function EditCard (props:any){
       cardYear: newInfo.cardYear
     }
   }
+  /* Изменяем данные о карте */
   function editInfoCard (value:string, type:string){
     setCardInfo((prev) => {
+      let newCard = {...prev}
       switch (type) {
-        case 'number': prev.cardNumb = value; break;
-        case 'name': prev.cardName = value; break;
-        case 'month': prev.cardMonth = Number(value); break;
-        case 'year': prev.cardYear = Number(value); break;
+        case 'number': newCard.cardNumb = value; break;
+        case 'name': newCard.cardName = value; break;
+        case 'month': newCard.cardMonth = Number(value); break;
+        case 'year': newCard.cardYear = Number(value); break;
       }
-      return prev
+      return newCard;
     })
   }
 
@@ -39,17 +47,25 @@ function EditCard (props:any){
     })
   }
 
+  debugger
+
   return<div>
     <Link to={`/myCards`}><h3>Назад</h3></Link>
     <div>
       <p>Номер:</p><input type={`text`}
                           onChange={(e)=>{editInfoCard(e.target.value, `number`)}}
                           value={`${cardInfo.cardNumb}`}/> <br/>
-      <p>Имя Фамилия: </p><input type={`text`} defaultValue={`${cardInfo.cardName}`}/> <br/>
-      <p>Месяц: </p><input type={`text`} defaultValue={`${cardInfo.cardMonth}`}/> <br/>
-      <p>Год: </p><input type={`text`} defaultValue={`${cardInfo.cardYear}`}/> <br/>
+      <p>Имя Фамилия: </p><input type={`text`}
+                                 onChange={(e)=>{editInfoCard(e.target.value, `name`)}}
+                                 value={`${cardInfo.cardName}`}/> <br/>
+      <p>Месяц: </p><input type={`text`}
+                           onChange={(e)=>{editInfoCard(e.target.value, `month`)}}
+                           value={`${cardInfo.cardMonth}`}/> <br/>
+      <p>Год: </p><input type={`text`}
+                         onChange={(e)=>{editInfoCard(e.target.value, `year`)}}
+                         value={`${cardInfo.cardYear}`}/> <br/>
     </div>
-    <input type={`submit`} value={`Сохранить`}/>
+    <input type={`submit`} onClick={()=>{ props.edit(cardIdURL)}} value={`Сохранить`}/>
     <input type={`submit`} value={`Отменить`}/>
     <input type={`submit`} value={`Удалить`}/>
   </div>

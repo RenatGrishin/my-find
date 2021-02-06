@@ -14,7 +14,7 @@ function MyCards(props:any) {
       <div>X</div>
     </div>
   }
-
+debugger
   return<div>
     <h3><Link to={`/`}>Найденные карты</Link></h3>
     <div>

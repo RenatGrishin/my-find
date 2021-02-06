@@ -34,6 +34,26 @@ function App(props:any) {
   const [lostCards, setLostCards] = useState(lostCardsInfo);
   const [myCards, setMyCards] = useState(myCardsInfo)
 
+  function editCard(id:number) {
+    setMyCards( (prev) => {
+      let cardInfo = myCards.allCards.find(card => card.id === id);
+      if (cardInfo === undefined) {
+        throw new TypeError('The value was promised to always be there!');
+      }
+      cardInfo.cardNumb = prev.editCard.cardNumb;
+      cardInfo.cardName = prev.editCard.cardName;
+      cardInfo.cardMonth = prev.editCard.cardMonth;
+      cardInfo.cardYear = prev.editCard.cardYear;
+      cardInfo.maybeOwner = [];
+      cardInfo.owner = 0;
+
+      let cards = {...myCards};
+      //cards.allCards = {...myCards.allCards};
+      //cards.allCards[id] = cardInfo;
+
+      return prev;
+    } )
+  }
 
   return (
     <div className={style.main}>
@@ -51,7 +71,7 @@ function App(props:any) {
           <Route exact path={'/'} render={()=><Main/>} />
           <MyCardsContext.Provider value={myCards}>
             <Route exact path={'/myCards'} component={()=><MyCards/>} />
-            <Route path={'/myCards/card/:number'} render={props=><EditCard props={props}/>} />
+            <Route path={'/myCards/card/:number'} render={props=><EditCard edit={editCard} props={props}/>} />
           </MyCardsContext.Provider>
         </Switch>
       </main>
