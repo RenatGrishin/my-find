@@ -1,20 +1,41 @@
 .main{
+    margin: 25px;
     display: grid;
+    grid-column-gap: 20px;
     grid-template:
     'a   a   b   b   c   c'  1fr
     'd   d   d   e   e   e'  1fr
     /1fr 1fr 1fr 1fr 1fr 1fr
     ;
 }
-
 .my_stuff{
     grid-area: a;
+    border: 1px solid #9f9f9f;
+    border-radius: 4px;
+    padding: 10px;
+    text-align: center;
+}
+.my_stuff a {
+    text-decoration: none;
+    color: #000000;
+}
+.my_stuff a:active{
+    text-decoration: none;
+    color: #9f9f9f;
 }
 .my_maybe{
     grid-area: b;
+    border: 1px solid #9f9f9f;
+    border-radius: 4px;
+    padding: 10px;
+    text-align: center;
 }
 .chat{
     grid-area: c;
+    border: 1px solid #9f9f9f;
+    border-radius: 4px;
+    padding: 10px;
+    text-align: center;
 }
 .i_lost{
     grid-area: d;

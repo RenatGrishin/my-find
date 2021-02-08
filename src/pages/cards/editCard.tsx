@@ -1,12 +1,13 @@
 import React, {useContext, useState} from "react";
 import {MyCardsContext} from "../../App";
 import {Link} from "react-router-dom";
+import css from "./editCard.module.css";
 
 function EditCard (props:any){
   const myCard = useContext(MyCardsContext);
-  let [cardInfo, setCardInfo] = useState(myCard.editCard);
+  let [cardInfo, setCardInfo] = useState({id:0, cardName:'', cardNumb:'', cardMonth:0, cardYear:0});
   const cardIdURL = Number(props.props.match.params.number);
-  console.log(props)
+  console.log(props);
 
   /*
   Исправить ошибку с сохранением данными о карте.
@@ -15,7 +16,7 @@ function EditCard (props:any){
 
   /* Создаем карточку для редактирования */
   function instCardInfo (){
-    let newInfo = myCard.allCards.find(card => card.id === cardIdURL);
+    let newInfo = myCard.find(card => card.id === cardIdURL);
     if (newInfo === undefined) {
       throw new TypeError('The value was promised to always be there!');
     }
@@ -47,27 +48,29 @@ function EditCard (props:any){
     })
   }
 
-  debugger
-
-  return<div>
+  return<div className={css.main}>
     <Link to={`/myCards`}><h3>Назад</h3></Link>
-    <div>
+    <div className={css.card}>
       <p>Номер:</p><input type={`text`}
                           onChange={(e)=>{editInfoCard(e.target.value, `number`)}}
                           value={`${cardInfo.cardNumb}`}/> <br/>
+
       <p>Имя Фамилия: </p><input type={`text`}
                                  onChange={(e)=>{editInfoCard(e.target.value, `name`)}}
                                  value={`${cardInfo.cardName}`}/> <br/>
-      <p>Месяц: </p><input type={`text`}
+
+      <p>ММ | ГГ </p><input className={css.input_DD_MM} type={`text`}
                            onChange={(e)=>{editInfoCard(e.target.value, `month`)}}
-                           value={`${cardInfo.cardMonth}`}/> <br/>
-      <p>Год: </p><input type={`text`}
+                           value={`${cardInfo.cardMonth}`}/>
+      <input className={css.input_DD_MM} type={`text`}
                          onChange={(e)=>{editInfoCard(e.target.value, `year`)}}
                          value={`${cardInfo.cardYear}`}/> <br/>
     </div>
-    <input type={`submit`} onClick={()=>{ props.edit(cardIdURL)}} value={`Сохранить`}/>
-    <input type={`submit`} value={`Отменить`}/>
-    <input type={`submit`} value={`Удалить`}/>
+    <div className={css.btn_down}>
+      <input className={css.btn_save} type={`submit`} onClick={()=>{ props.edit(cardInfo)}} value={`Сохранить`}/>
+      <Link to={`/myCards`}><input className={css.btn_cancel} type={`submit`} value={`Отменить`}/></Link>
+      <Link to={`/myCards`}><input className={css.btn_delete} type={`submit`} onClick={() => {props.delete(cardInfo.id)}} value={`Удалить`}/></Link>
+    </div>
   </div>
 }
 

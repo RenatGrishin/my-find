@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 function Main() {
   return <div className={style.main}>
     <div className={style.my_stuff}>
-      <Link to={`/myCards`}>Мои вещи</Link>
+      <Link to={`/myCards`}><a>Мои карты</a></Link>
     </div>
     <div className={style.my_maybe}>Это ваши?</div>
     <div className={style.chat}>Чат</div>
