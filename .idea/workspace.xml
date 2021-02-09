@@ -2,14 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="85911003-abce-4c87-9044-a15e662ecc24" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/pages/cards/addNewCard.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/cards/editCard-copy.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/cards/editCard.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/myCards/myCards.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/cards/addNewCard.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/cards/editCard-copy.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/cards/editCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/cards/editCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/main/main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/main/main.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/myCards/myCards.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/myCards/myCards.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/findCards.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/findCards.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/myCards.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/myCards.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -116,7 +117,8 @@
       <workItem from="1612805920605" duration="848000" />
       <workItem from="1612807180599" duration="313000" />
       <workItem from="1612807495743" duration="282000" />
-      <workItem from="1612807917486" duration="6662000" />
+      <workItem from="1612807917486" duration="10540000" />
+      <workItem from="1612883182515" duration="12930000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1612468696911</created>
@@ -153,7 +155,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612807934177</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Приложение для поиска потеянных банковских карт.&#10;&#10;Мои Карты:&#10; 1. Добавить карту&#10; 2. Редактировать&#10; 3. Удалить">
+      <created>1612869762543</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1612869762543</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -1,4 +1,12 @@
-export let findCardsInfo = [
+export let findCardsInfo:{
+  id:number,
+  cardName:string,
+  cardNumb:string,
+  cardMonth: number,
+  cardYear: number,
+  maybeOwner: number[],
+  owner: number
+}[] = [
   {
     id: 201,
     cardName: "INNA DOKINA",

@@ -1,4 +1,12 @@
-export let myCardsInfo = [
+export let myCardsInfo:{
+  id:number,
+  cardName:string,
+  cardNumb:string,
+  cardMonth: number,
+  cardYear: number,
+  maybeOwner: number[],
+  owner: number
+}[] = [
   {
     id: 201,
     cardName: "RENAT GRISHIN",

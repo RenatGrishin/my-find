@@ -1,25 +1,29 @@
 import React, {useContext, useState} from "react";
-import {MyCardsContext} from "../../App";
+import {MyCardsContext, FindCardsContext} from "../../App";
 import {Link} from "react-router-dom";
 import css from "./editCard.module.css";
 
 function EditCard (props:any){
   const myCard = useContext(MyCardsContext);
+  const findCard = useContext(FindCardsContext);
+  let showCards:any = {};
+
   let [cardInfo, setCardInfo] = useState({id:0, cardName:'', cardNumb:'', cardMonth:0, cardYear:0});
   const cardIdURL = Number(props.props.match.params.number);
 
   /* Создаем карточку для редактирования */
   function instCardInfo (){
-    let newInfo = myCard.find(card => card.id === cardIdURL);
-    if (newInfo === undefined) {
+    if(props.type === 'myCards') showCards = myCard.find(card => card.id === cardIdURL);
+    if(props.type === 'findCards') showCards = findCard.find(card => card.id === cardIdURL);
+    if (showCards === undefined) {
       throw new TypeError('The value was promised to always be there!');
     }
     return {
-      id: newInfo.id,
-      cardName: newInfo.cardName,
-      cardNumb: newInfo.cardNumb,
-      cardMonth: newInfo.cardMonth,
-      cardYear: newInfo.cardYear
+      id: showCards.id,
+      cardName: showCards.cardName,
+      cardNumb: showCards.cardNumb,
+      cardMonth: showCards.cardMonth,
+      cardYear: showCards.cardYear
     }
   }
   /* Изменяем данные о карте */
@@ -37,8 +41,15 @@ function EditCard (props:any){
   }
   /* Создаем новую карту */
   function createNewCard (){
-    let cardId = 0
-    if( myCard.length !== 0 ) cardId = myCard[myCard.length-1].id + 1;
+    let cardsList:any[] = [];
+    if(props.type === 'myCards') myCard.map(card => cardsList.push(card));
+    if(props.type === 'findCards') findCard.map(card => cardsList.push(card));
+    if (cardsList === undefined) {
+      throw new TypeError('The value was promised to always be there!');
+    }
+
+    let cardId = 0;
+    if( cardsList.length !== 0 ) cardId = cardsList[cardsList.length-1].id + 1;
     setCardInfo( (prev) =>{
       prev.id = cardId;
       return prev
@@ -49,16 +60,20 @@ function EditCard (props:any){
   function getButtons() {
     if (isNaN(cardIdURL)){
       return <div className={css.btn_down}>
-        <Link to={`/myCards`}><input className={css.btn_save} type={`submit`} onClick={()=>{ props.add(cardInfo)}} value={`Добавить`}/></Link>
-        <Link to={`/myCards`}><input className={css.btn_cancel} type={`submit`} value={`Отменить`}/></Link>
+        <Link to={`/${props.type}`}><input className={css.btn_save} type={`submit`} onClick={()=>{ props.add(cardInfo, props.type)}} value={`Добавить`}/></Link>
+        <Link to={`/${props.type}`}><input className={css.btn_cancel} type={`submit`} value={`Отменить`}/></Link>
       </div>
     }else{
       return <div className={css.btn_down}>
-        <Link to={`/myCards`}><input className={css.btn_save} type={`submit`} onClick={()=>{ props.edit(cardInfo)}} value={`Сохранить`}/></Link>
-        <Link to={`/myCards`}><input className={css.btn_cancel} type={`submit`} value={`Отменить`}/></Link>
-        <Link to={`/myCards`}><input className={css.btn_delete} type={`submit`} onClick={() => {props.delete(cardInfo.id)}} value={`Удалить`}/></Link>
+        <Link to={`/${props.type}`}><input className={css.btn_save} type={`submit`} onClick={()=>{ props.edit(cardInfo, props.type)}} value={`Сохранить`}/></Link>
+        <Link to={`/${props.type}`}><input className={css.btn_cancel} type={`submit`} value={`Отменить`}/></Link>
+        <Link to={`/${props.type}`}><input className={css.btn_delete} type={`submit`} onClick={() => {props.delete(cardInfo.id, props.type)}} value={`Удалить`}/></Link>
       </div>
     }
+  }
+  function getLinks() {
+    if(props.type === 'myCards') return <Link to={`/${props.type}`}><h3>Моя карта</h3></Link>;
+    if(props.type === 'findCards') return <Link to={`/${props.type}`}><h3>Найденная карта</h3></Link>
   }
 
   if(cardInfo.id !== cardIdURL && !isNaN(cardIdURL)){
@@ -70,7 +85,7 @@ function EditCard (props:any){
   }
 
   return<div className={css.main}>
-    <Link to={`/myCards`}><h3>Назад</h3></Link>
+    {getLinks()}
     <div className={css.card}>
       <p>Номер:</p><input type={`text`}
                           onChange={(e)=>{editInfoCard(e.target.value, `number`)}}
