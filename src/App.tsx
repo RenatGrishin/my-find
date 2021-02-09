@@ -29,10 +29,9 @@ function App(props:any) {
   /* Сохраняем изменения в собственных картах */
   function editMyCard(cardEditInfo:{id:number, cardNumb:string, cardName:string, cardMonth:number, cardYear:number}) {
     setMyCards( (prev) => {
-      let cardInfo = myCards.find(card => card.id === cardEditInfo.id);
-      if (cardInfo === undefined) {
-        throw new TypeError('The value was promised to always be there!');
-      }
+      let arrIDCard =  myCards.findIndex(card => card.id === cardEditInfo.id);
+      let cardInfo = prev[arrIDCard];
+
       cardInfo.cardNumb = cardEditInfo.cardNumb;
       cardInfo.cardName = cardEditInfo.cardName;
       cardInfo.cardMonth = cardEditInfo.cardMonth;
@@ -40,15 +39,14 @@ function App(props:any) {
       cardInfo.maybeOwner = [0];
       cardInfo.owner = 0;
 
-      let cards = {...myCards};
-      cards[cardEditInfo.id] = cardInfo;
+      let cards = [...prev];
+      cards[arrIDCard] = cardInfo;
 
-      return prev;
+      return cards;
     } )
   }
   /* Удаляем свою карточку */
   function deleteMyCard(id:number) {
-    console.log('delete')
     let newMyCardsList:{
       id:number,
       cardName:string,
@@ -59,14 +57,30 @@ function App(props:any) {
       owner: number
     }[] = [];
 
-    console.log(myCards)
-    console.log(newMyCardsList)
     myCards.map( (card)=>{ if (card.id !== id) { newMyCardsList.push(card) } } )
 
     setMyCards((prev) => {
       prev = newMyCardsList;
       return prev;
     })
+  }
+  /* Добавить новую собственную карту */
+  function addMyCard(cardEditInfo:{id:number, cardNumb:string, cardName:string, cardMonth:number, cardYear:number}) {
+    setMyCards( (prev) =>{
+      let newCard = {
+        id: cardEditInfo.id,
+        cardName: cardEditInfo.cardName,
+        cardNumb: cardEditInfo.cardNumb,
+        cardMonth: cardEditInfo.cardMonth,
+        cardYear: cardEditInfo.cardYear,
+        maybeOwner: [0],
+        owner: 0
+      }
+
+      prev.push(newCard);
+
+      return prev;
+    } )
   }
 
   return (
@@ -89,8 +103,10 @@ function App(props:any) {
               props={props}
               edit={editMyCard}
               delete={deleteMyCard} />} />
-            <Route path={'/myCards/card/addNewCard'} render={props=><EditCard
-              props={props} />} />
+            <Route path={'/myCards/addNewCard'} render={props=><EditCard
+              props={props}
+              add={addMyCard}
+            />} />
           </MyCardsContext.Provider>
         </Switch>
       </main>

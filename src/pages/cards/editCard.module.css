@@ -1,0 +1,43 @@
+.main{
+    margin: 0 25px;
+}
+.card{
+    border-radius: 5px;
+    background-color: dimgrey;
+    padding: 20px;
+    color: #fff;
+}
+.card p{
+    margin: 0; padding: 0;
+}
+.card input{
+    padding: 10px;
+    border-radius: 3px;
+    border: 1px;
+    margin-bottom: 20px;
+}
+input:nth-child(8), input:nth-child(9){margin-bottom: 0}
+.input_DD_MM{
+    width: 15px;
+    margin-right: 10px;
+}
+
+.btn_down{
+    padding-top: 20px;
+    text-align: center;
+}
+.btn_down input{
+    padding: 6px 20px;
+    border: 0px;
+    margin-right: 25px;
+    border-radius: 3px;
+}
+.btn_save{
+    background-color: #1FB48F;
+}
+.btn_cancel{
+    background-color: #F2C52A;
+}
+.btn_delete{
+    background-color: #FA545E;
+}

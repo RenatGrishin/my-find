@@ -20,7 +20,7 @@ function MyCards(props:any) {
     <div>
       {myCard.map(card => getMyCards(card.id, card.cardNumb))}
       <div className={css.body}>
-        <Link to={`/myCards/card/addNewCard`}>
+        <Link to={`/myCards/addNewCard`}>
           <a className={css.add_card}>+ Добавить новую карту</a>
         </Link>
       </div>

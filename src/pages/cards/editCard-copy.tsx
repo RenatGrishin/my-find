@@ -8,6 +8,8 @@ function EditCard (props:any){
   let [cardInfo, setCardInfo] = useState({id:0, cardName:'', cardNumb:'', cardMonth:0, cardYear:0});
   const cardIdURL = Number(props.props.match.params.number);
 
+
+
   /* Создаем карточку для редактирования */
   function instCardInfo (){
     let newInfo = myCard.find(card => card.id === cardIdURL);
@@ -35,38 +37,11 @@ function EditCard (props:any){
       return newCard;
     })
   }
-  /* Создаем новую карту */
-  function createNewCard (){
-    let cardId = 0
-    if( myCard.length !== 0 ) cardId = myCard[myCard.length-1].id + 1;
-    setCardInfo( (prev) =>{
-      prev.id = cardId;
-      return prev
-    } )
-  }
 
-  /* Рисуем кнопки */
-  function getButtons() {
-    if (isNaN(cardIdURL)){
-      return <div className={css.btn_down}>
-        <Link to={`/myCards`}><input className={css.btn_save} type={`submit`} onClick={()=>{ props.add(cardInfo)}} value={`Добавить`}/></Link>
-        <Link to={`/myCards`}><input className={css.btn_cancel} type={`submit`} value={`Отменить`}/></Link>
-      </div>
-    }else{
-      return <div className={css.btn_down}>
-        <Link to={`/myCards`}><input className={css.btn_save} type={`submit`} onClick={()=>{ props.edit(cardInfo)}} value={`Сохранить`}/></Link>
-        <Link to={`/myCards`}><input className={css.btn_cancel} type={`submit`} value={`Отменить`}/></Link>
-        <Link to={`/myCards`}><input className={css.btn_delete} type={`submit`} onClick={() => {props.delete(cardInfo.id)}} value={`Удалить`}/></Link>
-      </div>
-    }
-  }
-
-  if(cardInfo.id !== cardIdURL && !isNaN(cardIdURL)){
+  if(cardInfo.id !== cardIdURL){
     setCardInfo((prev) => {
       return instCardInfo();
     })
-  } else if(isNaN(cardIdURL) && cardInfo.id === 0) {
-    createNewCard();
   }
 
   return<div className={css.main}>
@@ -87,7 +62,11 @@ function EditCard (props:any){
                          onChange={(e)=>{editInfoCard(e.target.value, `year`)}}
                          value={`${cardInfo.cardYear}`}/> <br/>
     </div>
-    {getButtons()}
+    <div className={css.btn_down}>
+      <input className={css.btn_save} type={`submit`} onClick={()=>{ props.edit(cardInfo)}} value={`Сохранить`}/>
+      <Link to={`/myCards`}><input className={css.btn_cancel} type={`submit`} value={`Отменить`}/></Link>
+      <Link to={`/myCards`}><input className={css.btn_delete} type={`submit`} onClick={() => {props.delete(cardInfo.id)}} value={`Удалить`}/></Link>
+    </div>
   </div>
 }
 

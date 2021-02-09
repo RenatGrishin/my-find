@@ -1,0 +1,30 @@
+.main{
+    padding: 0 25px;
+}
+
+.body{
+    background-color: dimgrey;
+    border-radius: 3px;
+    padding: 20px;
+    margin-bottom: 25px;
+    position: relative;
+}
+.body a{
+    text-decoration: none;
+}
+.card_numb{
+    background-color: #fff;
+    color: #000;
+    border-radius: 2px;
+    padding: 5px;
+}
+.btn_x{
+    border: 0px;
+    background-color: rgba(0,0,0,0);
+    color: #fff;
+    position: absolute;
+    right: 25px;
+}
+.add_card{
+    color: white;
+}
