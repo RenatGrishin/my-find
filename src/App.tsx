@@ -140,13 +140,18 @@ function App(props:any) {
     }
   }
   /* Отправить сообщение */
-  function sendMessage(id:number){
+  function sendMessage(id:number, userID:number, msg:string){
     setChat( (prev) => {
-      let chatWUser = prev.find( ct => ct.id === id );
+      let chatWUser = prev.findIndex( ct => ct.id === id );
 
+      let msgID = prev[chatWUser].chat.length;
+      let sendMSG:{id:number, userID:number, msg:string} = {id:msgID, userID:userID, msg:msg};
 
+      let newChat = [...prev];
 
-      return prev;
+      newChat[chatWUser].chat.push(sendMSG);
+
+      return newChat;
     } )
   }
 
@@ -196,7 +201,11 @@ function App(props:any) {
         <Switch>
           <ChatContext.Provider value={chat}>
             <Route exact path={'/chat'} render={props=><Chat users={users}/>} />
-            <Route path={'/chat/:number'} render={props=><ChatWithUser props={props} users={users}/>} />
+            <Route path={'/chat/:number'} render={props=><ChatWithUser
+              props={props}
+              users={users}
+              sendMessage={sendMessage}
+            />} />
           </ChatContext.Provider>
         </Switch>
       </main>

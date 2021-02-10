@@ -2,20 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="85911003-abce-4c87-9044-a15e662ecc24" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/pages/chat/chat.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/chat/chatWithUser.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/allUsers..ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/chat.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/notice.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/main/main.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/main/main.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/main/main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/main/main.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/myCards/myCards.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/myCards/myCards.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/findCards.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/findCards.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/lostCards.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/myCards.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/myCards.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/user.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/chat/chatWithUser.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/chat/chatWithUser.tsx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -125,7 +114,7 @@
       <workItem from="1612807495743" duration="282000" />
       <workItem from="1612807917486" duration="10540000" />
       <workItem from="1612883182515" duration="24504000" />
-      <workItem from="1612977966078" duration="5577000" />
+      <workItem from="1612977966078" duration="7230000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1612468696911</created>
@@ -176,7 +165,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612897635033</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Приложение для поиска потеянных банковских карт.&#10;&#10;Будет чат">
+      <created>1612985018071</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1612985018071</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -199,6 +195,7 @@
     <MESSAGE value="1" />
     <MESSAGE value="Приложение для поиска потеянных банковских карт.&#10;&#10;Мои Карты:&#10; 1. Добавить карту&#10; 2. Редактировать&#10; 3. Удалить" />
     <MESSAGE value="Приложение для поиска потеянных банковских карт.&#10;&#10;Мои Карты и Найденные карты:&#10; 1. Добавить карту&#10; 2. Редактировать&#10; 3. Удалить" />
-    <option name="LAST_COMMIT_MESSAGE" value="Приложение для поиска потеянных банковских карт.&#10;&#10;Мои Карты и Найденные карты:&#10; 1. Добавить карту&#10; 2. Редактировать&#10; 3. Удалить" />
+    <MESSAGE value="Приложение для поиска потеянных банковских карт.&#10;&#10;Будет чат" />
+    <option name="LAST_COMMIT_MESSAGE" value="Приложение для поиска потеянных банковских карт.&#10;&#10;Будет чат" />
   </component>
 </project>
