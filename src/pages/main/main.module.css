@@ -23,7 +23,7 @@
     text-decoration: none;
     color: #9f9f9f;
 }
-.my_maybe{
+.i_find{
     grid-area: b;
     border: 1px solid #9f9f9f;
     border-radius: 4px;
@@ -37,9 +37,9 @@
     padding: 10px;
     text-align: center;
 }
-.i_lost{
+.i_lost1{
     grid-area: d;
 }
-.i_find{
+.i_find1{
     grid-area: e;
 }

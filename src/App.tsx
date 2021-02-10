@@ -1,36 +1,47 @@
-import style from "./App.module.css"
-import Main from "./pages/main/main";
-import {Route, Switch} from "react-router-dom";
-import MyCards from "./pages/myCards/myCards";
 import React, {useState} from "react";
+import style from "./App.module.css";
+import {Route, Switch} from "react-router-dom";
+import Main from "./pages/main/main";
+import MyCards from "./pages/myCards/myCards";
+import EditCard from "./pages/cards/editCard";
+import Chat from "./pages/chat/chat";
+import ChatWithUser from "./pages/chat/chatWithUser";
 import {userInfo} from "./store/user";
 import {findCardsInfo} from "./store/findCards";
 import {myCardsInfo} from "./store/myCards";
-import EditCard from "./pages/cards/editCard";
+import {myChat} from "./store/chat";
+import {allUsers} from "./store/allUsers.";
 
 const defaultValue:{
-  id:number, cardName:string, cardNumb:string, cardMonth: number, cardYear: number, maybeOwner: number[], owner: number
-}[] = [{ id: 0, cardName: "", cardNumb: "", cardMonth: 0, cardYear: 0, maybeOwner: [0], owner: 0 }];
+  id:number, userID:number, cardName:string, cardNumb:string, cardMonth: number, cardYear: number, maybeOwner: number[], owner: number
+}[] = [{ id: 0, userID:0, cardName: "", cardNumb: "", cardMonth: 0, cardYear: 0, maybeOwner: [0], owner: 0 }];
+const chatDefaultValue:any = [ { id:500, userOneID: 1, userTwoID: 2, chat:[ {id:0, userID:1, msg:`hi`} ] } ];
 
 export const MyCardsContext = React.createContext(defaultValue);
 export const FindCardsContext = React.createContext(defaultValue);
+export const ChatContext = React.createContext(chatDefaultValue);
 
 function App(props:any) {
   const [user, setUser] = useState(userInfo);
   const [findCards, setFindCards] = useState(findCardsInfo);
   const [myCards, setMyCards] = useState(myCardsInfo)
+  const [chat, setChat] = useState(myChat);
+  const [users, setUsers] = useState(allUsers);
+
+  const authUser:number = user.id
 
   /* Сохраняем изменения в собственных картах */
   function editMyCard(cardEditInfo:{id:number, cardNumb:string, cardName:string, cardMonth:number, cardYear:number}, type:string) {
     let cardInfo:{
       id:number,
+      userID: number,
       cardName:string,
       cardNumb:string,
       cardMonth: number,
       cardYear: number,
       maybeOwner: number[],
       owner: number
-    } = {id: 0, cardName: "", cardNumb: "", cardMonth: 0, cardYear: 0, maybeOwner: [], owner: 0};
+    } = {id: 0, userID:0, cardName: "", cardNumb: "", cardMonth: 0, cardYear: 0, maybeOwner: [], owner: 0};
     let arrIDCard:number;
 
     if(type === 'myCards'){
@@ -41,6 +52,7 @@ function App(props:any) {
       cardInfo = findCards[arrIDCard];
     }
 
+    cardInfo.userID = authUser;
     cardInfo.cardNumb = cardEditInfo.cardNumb;
     cardInfo.cardName = cardEditInfo.cardName;
     cardInfo.cardMonth = cardEditInfo.cardMonth;
@@ -56,6 +68,7 @@ function App(props:any) {
       } )
     }else if (type === 'findCards'){
       setFindCards( (prev) => {
+        console.log(prev)
         let cards = [...prev];
         cards[arrIDCard] = cardInfo;
         return cards;
@@ -66,6 +79,7 @@ function App(props:any) {
   function deleteMyCard(id:number, type:string) {
     let newMyCardsList:{
       id:number,
+      userID:number,
       cardName:string,
       cardNumb:string,
       cardMonth: number,
@@ -97,6 +111,7 @@ function App(props:any) {
       setMyCards( (prev) =>{
         let newCard = {
           id: cardEditInfo.id,
+          userID: authUser,
           cardName: cardEditInfo.cardName,
           cardNumb: cardEditInfo.cardNumb,
           cardMonth: cardEditInfo.cardMonth,
@@ -111,6 +126,7 @@ function App(props:any) {
       setFindCards( (prev) =>{
         let newCard = {
           id: cardEditInfo.id,
+          userID: authUser,
           cardName: cardEditInfo.cardName,
           cardNumb: cardEditInfo.cardNumb,
           cardMonth: cardEditInfo.cardMonth,
@@ -122,6 +138,16 @@ function App(props:any) {
         return prev;
       } )
     }
+  }
+  /* Отправить сообщение */
+  function sendMessage(id:number){
+    setChat( (prev) => {
+      let chatWUser = prev.find( ct => ct.id === id );
+
+
+
+      return prev;
+    } )
   }
 
   return (
@@ -166,6 +192,12 @@ function App(props:any) {
               add={addMyCard}
             />} />
           </FindCardsContext.Provider>
+        </Switch>
+        <Switch>
+          <ChatContext.Provider value={chat}>
+            <Route exact path={'/chat'} render={props=><Chat users={users}/>} />
+            <Route path={'/chat/:number'} render={props=><ChatWithUser props={props} users={users}/>} />
+          </ChatContext.Provider>
         </Switch>
       </main>
     </div>

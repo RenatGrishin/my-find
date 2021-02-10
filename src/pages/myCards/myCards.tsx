@@ -4,9 +4,6 @@ import {MyCardsContext, FindCardsContext} from "../../App";
 import css from "./myCards.module.css";
 
 function MyCards(props:any) {
-  /*let myCard:{
-    id:number, cardNumb:string, cardName:string, cardMonth:number, cardYear:number, maybeOwner:number[], owner:number
-  }[] = [];*/
   let myCard = useContext(MyCardsContext);
   let findCard = useContext(FindCardsContext);
   let showCards = [{id:0, cardNumb:'', cardName:'', cardMonth:0, cardYear:0, maybeOwner:[0], owner:0}];
@@ -20,6 +17,7 @@ function MyCards(props:any) {
       <a className={css.btn_x} onClick={() => {props.delete(id, props.type)}}> X</a>
     </div>
   }
+  debugger
 
   return<div className={css.main}>
     <h3><Link to={`/`}>Найденные карты</Link></h3>

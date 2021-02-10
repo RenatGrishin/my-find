@@ -1,5 +1,6 @@
 export let findCardsInfo:{
   id:number,
+  userID: number,
   cardName:string,
   cardNumb:string,
   cardMonth: number,
@@ -8,7 +9,8 @@ export let findCardsInfo:{
   owner: number
 }[] = [
   {
-    id: 201,
+    id: 301,
+    userID: 1,
     cardName: "INNA DOKINA",
     cardNumb: "1111 2222 3333 4444",
     cardMonth: 12,
