@@ -1,5 +1,5 @@
 .main{
-    margin: 25px;
+    margin: 25px 0;
     display: grid;
     grid-column-gap: 20px;
     grid-template:

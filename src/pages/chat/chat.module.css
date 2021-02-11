@@ -1,0 +1,46 @@
+.msg_block{
+    position: relative;
+    width: 100%;
+}
+.msg_block div{
+    width: 90%;
+    border-radius: 3px;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+.msg_block div p{
+    margin: 10px;
+    word-wrap: break-word;
+}
+.companion{
+    background-color: rgba(0,0,0, 0.05);
+}
+.me{
+    background-color: rgba(52, 155, 207, 0.2);
+    float: right;
+}
+
+.send_text_area{
+    width: 100%;
+    display: grid;
+    grid-column-gap: 5%;
+    grid-template:
+    'text button' 1fr
+    /70%  25%;
+}
+textarea{
+    height: 60px;
+    font-family: Helvetica;
+    line-height: 1.5;
+    border: 1px solid rgba(0,0,0, 0.1);
+    resize: none;
+    border-radius: 3px;
+    padding: 10px;
+    background-color: rgba(0,0,0,0.05);
+}
+.text_area{
+    grid-area: text;
+}
+.send_button{
+    grid-area: button;
+}

@@ -1,6 +1,10 @@
 .main{
   font-family: Helvetica;
 }
+main{
+  margin-left: 25px;
+  margin-right: 25px;
+}
 
 .head{
   width: 100%;

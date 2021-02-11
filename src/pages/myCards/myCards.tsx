@@ -17,7 +17,6 @@ function MyCards(props:any) {
       <a className={css.btn_x} onClick={() => {props.delete(id, props.type)}}> X</a>
     </div>
   }
-  debugger
 
   return<div className={css.main}>
     <h3><Link to={`/`}>Найденные карты</Link></h3>

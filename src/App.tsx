@@ -154,6 +154,14 @@ function App(props:any) {
       return newChat;
     } )
   }
+  /* Получить имя с кем чатимся */
+  function getNameUserChat(id:number) {
+    let member = users.find( (mbr:any) => mbr.id === id );
+    if (member === undefined) {
+      throw new TypeError('The value was promised to always be there!');
+    }
+    return member.userFIO;
+  }
 
   return (
     <div className={style.main}>
@@ -204,6 +212,8 @@ function App(props:any) {
             <Route path={'/chat/:number'} render={props=><ChatWithUser
               props={props}
               users={users}
+              meID={authUser}
+              getNameUserChat={getNameUserChat}
               sendMessage={sendMessage}
             />} />
           </ChatContext.Provider>

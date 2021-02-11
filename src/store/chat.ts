@@ -5,8 +5,8 @@ export let myChat = [
     userTwoID: 2,
     chat:[
       {id:0, userID:1, msg:`hi`},
-      {id:0, userID:2, msg:`Yes?`},
-      {id:0, userID:1, msg:`Give me my card!`}
+      {id:1, userID:2, msg:`Yes?`},
+      {id:2, userID:1, msg:`Give me my card!`}
     ]
   },
   {
@@ -15,7 +15,7 @@ export let myChat = [
     userTwoID: 3,
     chat:[
       {id:0, userID:1, msg:`aaa`},
-      {id:0, userID:4, msg:`bbb?`}
+      {id:1, userID:4, msg:`bbb?`}
     ]
   }
 ]
