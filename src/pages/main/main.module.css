@@ -8,38 +8,41 @@
     /1fr 1fr 1fr 1fr 1fr 1fr
     ;
 }
-.my_stuff{
-    grid-area: a;
+.main div{
     border: 1px solid #9f9f9f;
     border-radius: 4px;
     padding: 10px;
     text-align: center;
+    position: relative;
 }
-.my_stuff a {
+.main div a{
     text-decoration: none;
     color: #000000;
 }
-.my_stuff a:active{
-    text-decoration: none;
+.main div a:hover{
     color: #9f9f9f;
+}
+.main div .notice{
+    min-width: 16px;
+    height: 16px;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    color: white;
+    display: inline-block;
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    border-radius: 8px;
+    border: 0px;
+    background-color: #F2C52A;
+}
+.my_stuff{
+    grid-area: a;
 }
 .i_find{
     grid-area: b;
-    border: 1px solid #9f9f9f;
-    border-radius: 4px;
-    padding: 10px;
-    text-align: center;
 }
 .chat{
     grid-area: c;
-    border: 1px solid #9f9f9f;
-    border-radius: 4px;
-    padding: 10px;
-    text-align: center;
-}
-.i_lost1{
-    grid-area: d;
-}
-.i_find1{
-    grid-area: e;
 }

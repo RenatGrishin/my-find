@@ -1,8 +1,9 @@
-export let notice = {
+export let allNotice = {
   lostMyCards: [
     {
       id: 1000,
-      cardID: 201
+      cardID: 202,
+      idFinder: 3,
     }
   ],
   myFindsCards: [

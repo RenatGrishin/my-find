@@ -11,15 +11,18 @@ import {findCardsInfo} from "./store/findCards";
 import {myCardsInfo} from "./store/myCards";
 import {myChat} from "./store/chat";
 import {allUsers} from "./store/allUsers.";
+import {allNotice} from "./store/notice";
 
 const defaultValue:{
   id:number, userID:number, cardName:string, cardNumb:string, cardMonth: number, cardYear: number, maybeOwner: number[], owner: number
 }[] = [{ id: 0, userID:0, cardName: "", cardNumb: "", cardMonth: 0, cardYear: 0, maybeOwner: [0], owner: 0 }];
 const chatDefaultValue:any = [ { id:500, userOneID: 1, userTwoID: 2, chat:[ {id:0, userID:1, msg:`hi`} ] } ];
+const noticeDefaultValue:any = { lostMyCards: [ {id: 1000, cardID: 201} ], myFindsCards: [{id: 2000, cardID: 301}] };
 
 export const MyCardsContext = React.createContext(defaultValue);
 export const FindCardsContext = React.createContext(defaultValue);
 export const ChatContext = React.createContext(chatDefaultValue);
+export const NoticeContext = React.createContext(noticeDefaultValue);
 
 function App(props:any) {
   const [user, setUser] = useState(userInfo);
@@ -27,6 +30,7 @@ function App(props:any) {
   const [myCards, setMyCards] = useState(myCardsInfo)
   const [chat, setChat] = useState(myChat);
   const [users, setUsers] = useState(allUsers);
+  const [notice, setNotice] = useState(allNotice);
 
   const authUser:number = user.id
 
@@ -176,14 +180,24 @@ function App(props:any) {
       </header>
       <main>
         <Switch>
-          <Route exact path={'/'} render={()=><Main/>} />
+          <NoticeContext.Provider value={notice}>
+            <Route exact path={'/'} render={props=><Main props={props}
+            />} />
+          </NoticeContext.Provider>
+        </Switch>
+        <Switch>
           <MyCardsContext.Provider value={myCards}>
-            <Route exact path={'/myCards'} render={props=><MyCards type={`myCards`} delete={deleteMyCard} />} />
+            <Route exact path={'/myCards'} render={props=><MyCards
+              type={`myCards`}
+              noticeCards={notice.lostMyCards}
+              delete={deleteMyCard}
+            />} />
             <Route path={'/myCards/card/:number'} render={props=><EditCard
               type={`myCards`}
               props={props}
               edit={editMyCard}
-              delete={deleteMyCard} />} />
+              delete={deleteMyCard}
+            />} />
             <Route path={'/myCards/addNewCard'} render={props=><EditCard
               props={props}
               type={`myCards`}

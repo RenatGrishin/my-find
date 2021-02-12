@@ -2,17 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="85911003-abce-4c87-9044-a15e662ecc24" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/pages/chat/chat.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/cards/editCard.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/cards/editCard.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/chat/chat.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/chat/chat.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/chat/chatWithUser.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/chat/chatWithUser.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/main/main.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/main/main.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/main/main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/main/main.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/myCards/myCards.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/myCards/myCards.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/myCards/myCards.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/myCards/myCards.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/chat.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/chat.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/notice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/notice.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -122,7 +118,7 @@
       <workItem from="1612807495743" duration="282000" />
       <workItem from="1612807917486" duration="10540000" />
       <workItem from="1612883182515" duration="24504000" />
-      <workItem from="1612977966078" duration="14431000" />
+      <workItem from="1612977966078" duration="21011000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1612468696911</created>
@@ -187,7 +183,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612987424606</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Приложение для поиска потеянных банковских карт.&#10;&#10;Добавлен чат">
+      <created>1613044026125</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1613044026125</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -211,6 +214,7 @@
     <MESSAGE value="Приложение для поиска потеянных банковских карт.&#10;&#10;Мои Карты:&#10; 1. Добавить карту&#10; 2. Редактировать&#10; 3. Удалить" />
     <MESSAGE value="Приложение для поиска потеянных банковских карт.&#10;&#10;Мои Карты и Найденные карты:&#10; 1. Добавить карту&#10; 2. Редактировать&#10; 3. Удалить" />
     <MESSAGE value="Приложение для поиска потеянных банковских карт.&#10;&#10;Будет чат" />
-    <option name="LAST_COMMIT_MESSAGE" value="Приложение для поиска потеянных банковских карт.&#10;&#10;Будет чат" />
+    <MESSAGE value="Приложение для поиска потеянных банковских карт.&#10;&#10;Добавлен чат" />
+    <option name="LAST_COMMIT_MESSAGE" value="Приложение для поиска потеянных банковских карт.&#10;&#10;Добавлен чат" />
   </component>
 </project>

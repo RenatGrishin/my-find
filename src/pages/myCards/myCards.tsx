@@ -10,11 +10,25 @@ function MyCards(props:any) {
 
   if(props.type === 'myCards') showCards = myCard;
   if(props.type === 'findCards') showCards = findCard;
+  
+  function getNoticeInfo() {
+    if(!props.noticeCards.length) return false;
+
+    return<div className={css.notice_block}>
+      <input type={`submit`} value={"Карта у меня"} />
+      <input type={`submit`} value={`Чат`} />
+    </div>
+  }
+
+  debugger
 
   function getMyCards(id:number, cardNumb:string) {
-    return <div key={id} className={css.body}>
-      <Link className={css.card_numb} to={`/${props.type}/card/${id}`}> {cardNumb} </Link>
-      <a className={css.btn_x} onClick={() => {props.delete(id, props.type)}}> X</a>
+    return <div className={css.main_body}>
+      <div key={id} className={css.body}>
+        <Link className={css.card_numb} to={`/${props.type}/card/${id}`}> {cardNumb} </Link>
+        <a className={css.btn_x} onClick={() => {props.delete(id, props.type)}}> X</a>
+      </div>
+      {getNoticeInfo()}
     </div>
   }
 
