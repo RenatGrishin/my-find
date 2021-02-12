@@ -10,6 +10,7 @@ export let allNotice = {
     {
       id: 2000,
       cardID: 301,
+      ownerID: 2,
     }
   ]
 }

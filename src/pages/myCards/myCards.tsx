@@ -11,16 +11,17 @@ function MyCards(props:any) {
   if(props.type === 'myCards') showCards = myCard;
   if(props.type === 'findCards') showCards = findCard;
   
-  function getNoticeInfo() {
-    if(!props.noticeCards.length) return false;
-
+  function getNoticeInfo(id:number) {
+    let idCad = props.noticeCards.find((crd:any) => crd.cardID === id);
+    if (idCad === undefined) {
+      return false;
+      throw new TypeError('The value was promised to always be there!');
+    }
     return<div className={css.notice_block}>
-      <input type={`submit`} value={"Карта у меня"} />
+      <input type={`submit`} onClick={()=>{ props.deleteMyCardFromNotice(idCad.id) }} value={"Карта у меня"} />
       <input type={`submit`} value={`Чат`} />
     </div>
   }
-
-  debugger
 
   function getMyCards(id:number, cardNumb:string) {
     return <div className={css.main_body}>
@@ -28,7 +29,7 @@ function MyCards(props:any) {
         <Link className={css.card_numb} to={`/${props.type}/card/${id}`}> {cardNumb} </Link>
         <a className={css.btn_x} onClick={() => {props.delete(id, props.type)}}> X</a>
       </div>
-      {getNoticeInfo()}
+      {getNoticeInfo(id)}
     </div>
   }
 

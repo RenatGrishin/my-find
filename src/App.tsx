@@ -166,6 +166,18 @@ function App(props:any) {
     }
     return member.userFIO;
   }
+  /* Подтверждаем что получили карту. Удаляем запись */
+  function deleteMyCardFromNotice(id:number) {
+    setNotice( (prev) =>{
+      let copyState = {...prev};
+      copyState.myFindsCards = [...prev.myFindsCards];
+      let newCards:{id: number, cardID: number, idFinder: number}[] = [];
+
+      notice.lostMyCards.map( (obj:any) => {if (obj.id !== id) newCards.push(obj) } );
+      copyState.lostMyCards = newCards;
+      return copyState;
+    } )
+  }
 
   return (
     <div className={style.main}>
@@ -191,6 +203,7 @@ function App(props:any) {
               type={`myCards`}
               noticeCards={notice.lostMyCards}
               delete={deleteMyCard}
+              deleteMyCardFromNotice={deleteMyCardFromNotice}
             />} />
             <Route path={'/myCards/card/:number'} render={props=><EditCard
               type={`myCards`}
