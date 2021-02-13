@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import style from "./App.module.css";
-import {Route, Switch} from "react-router-dom";
+import {Link, Route, Switch} from "react-router-dom";
 import Main from "./pages/main/main";
 import MyCards from "./pages/myCards/myCards";
 import EditCard from "./pages/cards/editCard";
@@ -178,7 +178,55 @@ function App(props:any) {
       return copyState;
     } )
   }
+  function deleteFindCardFromNotice(id:number) {
+    setNotice( (prev) =>{
+      let copyState = {...prev};
+      copyState.lostMyCards = [...prev.lostMyCards];
+      let newCards:{id: number, cardID: number, ownerID: number}[] = [];
 
+      notice.myFindsCards.map( (obj:any) => {if (obj.id !== id) newCards.push(obj) } );
+      copyState.myFindsCards = newCards;
+      return copyState;
+    } )
+  }
+  /* Создаем новый чат с пользователем */
+  function createNewChatWithUser(meID:number, heID:number) {
+    let newChat = {
+      id: chat[chat.length-1].id+1,
+      userOneID: meID,
+      userTwoID: heID,
+      chat:[
+        {id:0, userID:0, msg:`Добро пожаловать в Чат`}
+      ]
+    }
+
+    setChat( (prev) =>{
+      let copyState = [...prev];
+      newChat.id = copyState[copyState.length-1].id+1;
+      copyState.push(newChat);
+
+      return copyState;
+    } )
+    console.log(newChat)
+    return newChat;
+  }
+  /* Получаем ссылку на чат */
+  function getLinkToChat(meID: number, heID:number) {
+    let existsUser:boolean = false;
+    users.map( (unit:any) => {if (unit.id === heID) existsUser=true } )
+    if(existsUser === false) {console.log('Пользователь не существует'); return false;}
+
+    let chatWithUser:any;
+    chatWithUser = chat.find( (unit:any) => {
+      if ((unit.userOneID === meID && unit.userTwoID === heID) || (unit.userOneID === heID && unit.userTwoID === meID)){
+        return unit;
+      }
+    } );
+    if (chatWithUser === undefined) { chatWithUser = createNewChatWithUser(meID, heID); }
+debugger
+    console.log(chatWithUser)
+    return <Link to={`/chat/${chatWithUser.id}`}>Чат</Link>
+  }
   return (
     <div className={style.main}>
       <header className={style.head}>
@@ -204,6 +252,7 @@ function App(props:any) {
               noticeCards={notice.lostMyCards}
               delete={deleteMyCard}
               deleteMyCardFromNotice={deleteMyCardFromNotice}
+              getLinkToChat={getLinkToChat}
             />} />
             <Route path={'/myCards/card/:number'} render={props=><EditCard
               type={`myCards`}
@@ -220,7 +269,12 @@ function App(props:any) {
         </Switch>
         <Switch>
           <FindCardsContext.Provider value={findCards}>
-            <Route exact path={'/findCards'} render={props=><MyCards type={`findCards`} delete={deleteMyCard} />} />
+            <Route exact path={'/findCards'} render={props=><MyCards
+              type={`findCards`}
+              noticeCards={notice.myFindsCards}
+              delete={deleteMyCard}
+              deleteFindCardFromNotice={deleteFindCardFromNotice}
+            />} />
             <Route path={'/findCards/card/:number'} render={props=><EditCard
               props={props}
               type={`findCards`}

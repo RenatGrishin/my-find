@@ -14,4 +14,9 @@ export let allUsers = [
     avatar: "avatar3.jpg",
     userFIO: "Дмитрий Котов",
   },
+  {
+    id: 4,
+    avatar: "avatar4.jpg",
+    userFIO: "Евгений Демидов",
+  },
 ];

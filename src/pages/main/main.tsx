@@ -19,7 +19,7 @@ function Main(props:any) {
     </div>
     <div className={style.i_find}>
       <Link to={`/findCards`}>Я нашел</Link>
-      { (notice.myFindsCards.length > 0) ? getNoticeSum(notice.lostMyCards) : false }
+      { (notice.myFindsCards.length > 0) ? getNoticeSum(notice.myFindsCards) : false }
     </div>
     <div className={style.chat}>
       <Link to={`/chat`}>Чат</Link>

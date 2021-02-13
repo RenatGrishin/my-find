@@ -3,7 +3,7 @@ export let allNotice = {
     {
       id: 1000,
       cardID: 202,
-      idFinder: 3,
+      idFinder: 4,
     }
   ],
   myFindsCards: [
