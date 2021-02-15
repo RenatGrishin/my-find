@@ -19,17 +19,18 @@ function MyCards(props:any) {
     }
 
     return<div className={css.notice_block}>
-      <input type={`submit`} onClick={()=>{
-        if(props.type === 'myCards') props.deleteMyCardFromNotice(idCard.id);
-        if(props.type === 'findCards') props.deleteFindCardFromNotice(idCard.id);
-      }} value={"Карта у меня"} />
-      {props.getLinkToChat(meID, idCard.idFinder)}
+      { (props.type === 'myCards')
+        ? <input type={`submit`} onClick={()=>{props.deleteMyCardFromNotice(idCard.id)}} value={"Карта у меня"}/>
+        : <></>
+      }
+      {(props.type === 'myCards') ? props.getLinkToChat(meID, idCard.idFinder) : <></>}
+      {(props.type === 'findCards') ? props.getLinkToChat(meID, idCard.owner) : <></>}
     </div>
   }
 
   function getMyCards(id:number, cardNumb:string, userID:number) {
-    return <div className={css.main_body}>
-      <div key={id} className={css.body}>
+    return <div key={id} className={css.main_body}>
+      <div className={css.body}>
         <Link className={css.card_numb} to={`/${props.type}/card/${id}`}> {cardNumb} </Link>
         <a className={css.btn_x} onClick={() => {props.delete(id, props.type)}}> X</a>
       </div>

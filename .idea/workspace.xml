@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="85911003-abce-4c87-9044-a15e662ecc24" name="Default Changelist" comment="">
+    <list default="true" id="85911003-abce-4c87-9044-a15e662ecc24" name="Default Changelist" comment="Приложение для поиска потеянных банковских карт.&#10;&#10;Исправлен баг с дублированием чата при переходи в него из списка с картами.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/main/main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/main/main.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/chat/chatWithUser.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/chat/chatWithUser.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/myCards/myCards.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/myCards/myCards.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/allUsers..ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/allUsers..ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/notice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/notice.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -118,7 +116,7 @@
       <workItem from="1612807917486" duration="10540000" />
       <workItem from="1612883182515" duration="24504000" />
       <workItem from="1612977966078" duration="21597000" />
-      <workItem from="1613158764731" duration="15235000" />
+      <workItem from="1613158764731" duration="26637000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1612468696911</created>
@@ -204,7 +202,14 @@
       <option name="project" value="LOCAL" />
       <updated>1613161342237</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Приложение для поиска потеянных банковских карт.&#10;&#10;Если нашлась ваша карта, то создается чат с тем кто ее нашел">
+      <created>1613242209273</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1613242209273</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -230,6 +235,7 @@
     <MESSAGE value="Приложение для поиска потеянных банковских карт.&#10;&#10;Будет чат" />
     <MESSAGE value="Приложение для поиска потеянных банковских карт.&#10;&#10;Добавлен чат" />
     <MESSAGE value="Приложение для поиска потеянных банковских карт.&#10;&#10;Выходят уведомления если твою карту нашли:&#10;Можно нажать &quot;Карта у меня&quot; и тогда уведомление исчезнет.&#10;&#10;Не Работает. Рядом есть кнопка &quot;Чат&quot;. При нажатии, отероется час с человеком который нашел твою карту.&#10;&#10;Далее надо будет сэмулировать работу сервера, при изменении данных карты, чтобы уведомление проверяла notice файл и удаляла уведомление от туда если данные разнятся." />
-    <option name="LAST_COMMIT_MESSAGE" value="Приложение для поиска потеянных банковских карт.&#10;&#10;Выходят уведомления если твою карту нашли:&#10;Можно нажать &quot;Карта у меня&quot; и тогда уведомление исчезнет.&#10;&#10;Не Работает. Рядом есть кнопка &quot;Чат&quot;. При нажатии, отероется час с человеком который нашел твою карту.&#10;&#10;Далее надо будет сэмулировать работу сервера, при изменении данных карты, чтобы уведомление проверяла notice файл и удаляла уведомление от туда если данные разнятся." />
+    <MESSAGE value="Приложение для поиска потеянных банковских карт.&#10;&#10;Если нашлась ваша карта, то создается чат с тем кто ее нашел" />
+    <option name="LAST_COMMIT_MESSAGE" value="Приложение для поиска потеянных банковских карт.&#10;&#10;Если нашлась ваша карта, то создается чат с тем кто ее нашел" />
   </component>
 </project>

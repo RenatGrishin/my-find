@@ -12,6 +12,7 @@ import {myCardsInfo} from "./store/myCards";
 import {myChat} from "./store/chat";
 import {allUsers} from "./store/allUsers.";
 import {allNotice} from "./store/notice";
+import {log} from "util";
 
 const defaultValue:{
   id:number, userID:number, cardName:string, cardNumb:string, cardMonth: number, cardYear: number, maybeOwner: number[], owner: number
@@ -190,7 +191,15 @@ function App(props:any) {
     } )
   }
   /* Создаем новый чат с пользователем */
-  function createNewChatWithUser(meID:number, heID:number) {
+  function createNewChatWithUser(meID:number, heID:number, chatID:number) {
+    let chatWithUser:any;
+    chatWithUser = chat.find( (unit:any) => {
+      if ((unit.userOneID === meID && unit.userTwoID === heID) || (unit.userOneID === heID && unit.userTwoID === meID)){
+        return unit;
+      }
+    } );
+    if (chatWithUser) return chatWithUser;
+
     let newChat = {
       id: chat[chat.length-1].id+1,
       userOneID: meID,
@@ -201,13 +210,20 @@ function App(props:any) {
     }
 
     setChat( (prev) =>{
+      console.log("setChat: start");
       let copyState = [...prev];
-      newChat.id = copyState[copyState.length-1].id+1;
-      copyState.push(newChat);
+      let is = prev.find( (unit:any) => {
+        if ((unit.userOneID === meID && unit.userTwoID === heID) || (unit.userOneID === heID && unit.userTwoID === meID)){
+          return true;
+        }
+      } );
+      if (!is){
+        copyState.push(newChat);
+      }
 
       return copyState;
-    } )
-    console.log(newChat)
+    } );
+
     return newChat;
   }
   /* Получаем ссылку на чат */
@@ -222,11 +238,13 @@ function App(props:any) {
         return unit;
       }
     } );
-    if (chatWithUser === undefined) { chatWithUser = createNewChatWithUser(meID, heID); }
-debugger
-    console.log(chatWithUser)
+    if (chatWithUser === undefined) {
+      return <Link to={`/chat/${chat[chat.length-1].id+1}?meID=${meID}&heID=${heID}`}>Чат</Link>
+    }
+
     return <Link to={`/chat/${chatWithUser.id}`}>Чат</Link>
   }
+
   return (
     <div className={style.main}>
       <header className={style.head}>
@@ -274,6 +292,7 @@ debugger
               noticeCards={notice.myFindsCards}
               delete={deleteMyCard}
               deleteFindCardFromNotice={deleteFindCardFromNotice}
+              getLinkToChat={getLinkToChat}
             />} />
             <Route path={'/findCards/card/:number'} render={props=><EditCard
               props={props}
@@ -296,6 +315,7 @@ debugger
               meID={authUser}
               getNameUserChat={getNameUserChat}
               sendMessage={sendMessage}
+              createNewChatWithUser={createNewChatWithUser}
             />} />
           </ChatContext.Provider>
         </Switch>
