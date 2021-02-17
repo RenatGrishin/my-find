@@ -174,7 +174,7 @@ function App(props:any) {
       copyState.myFindsCards = [...prev.myFindsCards];
       let newCards:{id: number, cardID: number, idFinder: number}[] = [];
 
-      notice.lostMyCards.map( (obj:any) => {if (obj.id !== id) newCards.push(obj) } );
+      copyState.lostMyCards.map( (obj:any) => {if (obj.id !== id) newCards.push(obj) } );
       copyState.lostMyCards = newCards;
       return copyState;
     } )
@@ -184,9 +184,11 @@ function App(props:any) {
       let copyState = {...prev};
       copyState.lostMyCards = [...prev.lostMyCards];
       let newCards:{id: number, cardID: number, ownerID: number}[] = [];
+      console.log(id)
 
-      notice.myFindsCards.map( (obj:any) => {if (obj.id !== id) newCards.push(obj) } );
+      copyState.myFindsCards.map( (obj:any) => {if (obj.cardID !== id) newCards.push(obj) } );
       copyState.myFindsCards = newCards;
+      console.log(copyState)
       return copyState;
     } )
   }
@@ -228,6 +230,7 @@ function App(props:any) {
   }
   /* Получаем ссылку на чат */
   function getLinkToChat(meID: number, heID:number) {
+    console.log(heID)
     let existsUser:boolean = false;
     users.map( (unit:any) => {if (unit.id === heID) existsUser=true } )
     if(existsUser === false) {console.log('Пользователь не существует'); return false;}
@@ -298,7 +301,8 @@ function App(props:any) {
               props={props}
               type={`findCards`}
               edit={editMyCard}
-              delete={deleteMyCard} />} />
+              delete={deleteMyCard}
+            />} />
             <Route path={'/findCards/addNewCard'} render={props=><EditCard
               props={props}
               type={`findCards`}

@@ -11,20 +11,38 @@ function MyCards(props:any) {
   if(props.type === 'myCards') showCards = myCard;
   if(props.type === 'findCards') showCards = findCard;
 
-  function getNoticeInfo(id:number, meID:number) {
+
+  function getCardNotice(id:number, meID:number=0) {
     let idCard = props.noticeCards.find((crd:any) => crd.cardID === id);
     if (idCard === undefined) {
       return false;
       throw new TypeError('The value was promised to always be there!');
     }
+    console.log(idCard)
+    return idCard;
+  }
+  function deleteNotionAndCard(id:number){
+    props.delete(id, props.type);
+    let idCard = getCardNotice(id);
+    if (props.type === 'myCards'){
+      props.deleteMyCardFromNotice(idCard.id);
+    }else if (props.type === 'findCards'){
+      props.deleteFindCardFromNotice(idCard.cardID);
+    }
+  }
+  function getNoticeInfo(id:number, meID:number) {
+    let idCard = getCardNotice(id, meID);
+    if (!idCard) return false;
 
     return<div className={css.notice_block}>
       { (props.type === 'myCards')
-        ? <input type={`submit`} onClick={()=>{props.deleteMyCardFromNotice(idCard.id)}} value={"Карта у меня"}/>
-        : <></>
+        ?<input type={`submit`} onClick={()=>{props.deleteMyCardFromNotice(idCard.id)}} value={"Карта у меня"}/>:<></>
+      }
+      { (props.type === 'findCards')
+        ?<input type={`submit`} onClick={()=>{deleteNotionAndCard(idCard.cardID)}} value={"Карта вернул"}/>:<></>
       }
       {(props.type === 'myCards') ? props.getLinkToChat(meID, idCard.idFinder) : <></>}
-      {(props.type === 'findCards') ? props.getLinkToChat(meID, idCard.owner) : <></>}
+      {(props.type === 'findCards') ? props.getLinkToChat(meID, idCard.ownerID) : <></>}
     </div>
   }
 
@@ -32,7 +50,9 @@ function MyCards(props:any) {
     return <div key={id} className={css.main_body}>
       <div className={css.body}>
         <Link className={css.card_numb} to={`/${props.type}/card/${id}`}> {cardNumb} </Link>
-        <a className={css.btn_x} onClick={() => {props.delete(id, props.type)}}> X</a>
+        <a className={css.btn_x} onClick={() => {
+          deleteNotionAndCard(id)}
+        }> X</a>
       </div>
       {getNoticeInfo(id, userID)}
     </div>
