@@ -11,6 +11,52 @@ function EditCard (props:any){
   let [cardInfo, setCardInfo] = useState({id:0, cardName:'', cardNumb:'', cardMonth:0, cardYear:0});
   const cardIdURL = Number(props.props.match.params.number);
 
+  /* Валидация */
+  /* Ввод номера карты */
+  function cardNumberValidation(number:string) {
+    let numbersCardArray:string[]|null = number.match(/\d{1,1}/g);
+    let numberCard:string = '';
+
+    if (!numbersCardArray) return '';
+    if (numbersCardArray.length > 16) return false;
+
+    for(let i=0; i<numbersCardArray.length; i++){
+      if(i !==0 && (i % 4) === 0 ){
+        numberCard += ' ';
+      }
+      numberCard += numbersCardArray[i];
+    }
+
+    return numberCard;
+  }
+  /* Ввод имени */
+  function cardNameValidation(name:string){
+    name = name.toUpperCase();
+    if (name.match(/[^A-Z\s]/g))return false;
+    if (name.split(' ').length > 2) return false;
+    if (name.slice(0,1) === ' ' ) return false;
+
+    return name;
+  }
+  /* Ввод месяца и года */
+  function cardMontAndYearValidation(date:string, type:string) {
+    if (date.match(/[^\d]{1,2}/g)) return false;
+
+    let numbDate:number = Number(date);
+
+    if (type == 'month' && numbDate > 12 ) return false;
+    if (type == 'year' && numbDate > 99 ) return false
+
+    return numbDate;
+  }
+  /* Сохранение и добавление данных */
+  function addAndSaveValidation(type:string) {
+    if (cardInfo.cardNumb.length < 19) console.log(`Номер карты введен не полностью`);
+    if (cardInfo.cardName.split(' ').length < 2) console.log(`Поле владельца карты заполнено не полностью`);
+    if (cardInfo.cardMonth === 0) console.log(`Месяц не может быть равено 0`);
+    props.add(cardInfo, props.type)
+  }
+
   /* Создаем карточку для редактирования */
   function instCardInfo (){
     if(props.type === 'myCards') showCards = myCard.find(card => card.id === cardIdURL);
@@ -28,13 +74,26 @@ function EditCard (props:any){
   }
   /* Изменяем данные о карте */
   function editInfoCard (value:string, type:string){
+    let validation: string | number | boolean;
     setCardInfo((prev) => {
       let newCard = {...prev}
       switch (type) {
-        case 'number': newCard.cardNumb = value; break;
-        case 'name': newCard.cardName = value; break;
-        case 'month': newCard.cardMonth = Number(value); break;
-        case 'year': newCard.cardYear = Number(value); break;
+        case 'number':
+          validation = cardNumberValidation(value);
+          if (validation !== false ) newCard.cardNumb = validation;
+          break;
+        case 'name':
+          validation = cardNameValidation(value);
+          if (validation !== false ) newCard.cardName = validation;
+          break;
+        case 'month':
+          validation = cardMontAndYearValidation(value, type);
+          if (validation !== false ) newCard.cardMonth = validation;
+          break;
+        case 'year':
+          validation = cardMontAndYearValidation(value, type);
+          if (validation !== false ) newCard.cardYear = validation;
+          break;
       }
       return newCard;
     })
@@ -55,12 +114,11 @@ function EditCard (props:any){
       return prev
     } )
   }
-
   /* Рисуем кнопки */
   function getButtons() {
     if (isNaN(cardIdURL)){
       return <div className={css.btn_down}>
-        <Link to={`/${props.type}`}><input className={css.btn_save} type={`submit`} onClick={()=>{ props.add(cardInfo, props.type)}} value={`Добавить`}/></Link>
+        <Link to={`/${props.type}`}><input className={css.btn_save} type={`submit`} onClick={()=>{ addAndSaveValidation('add')}} value={`Добавить`}/></Link>
         <Link to={`/${props.type}`}><input className={css.btn_cancel} type={`submit`} value={`Отменить`}/></Link>
       </div>
     }else{

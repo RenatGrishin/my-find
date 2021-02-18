@@ -11,14 +11,12 @@ function MyCards(props:any) {
   if(props.type === 'myCards') showCards = myCard;
   if(props.type === 'findCards') showCards = findCard;
 
-
   function getCardNotice(id:number, meID:number=0) {
     let idCard = props.noticeCards.find((crd:any) => crd.cardID === id);
     if (idCard === undefined) {
       return false;
       throw new TypeError('The value was promised to always be there!');
     }
-    console.log(idCard)
     return idCard;
   }
   function deleteNotionAndCard(id:number){

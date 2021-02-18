@@ -12,7 +12,6 @@ import {myCardsInfo} from "./store/myCards";
 import {myChat} from "./store/chat";
 import {allUsers} from "./store/allUsers.";
 import {allNotice} from "./store/notice";
-import {log} from "util";
 
 const defaultValue:{
   id:number, userID:number, cardName:string, cardNumb:string, cardMonth: number, cardYear: number, maybeOwner: number[], owner: number
