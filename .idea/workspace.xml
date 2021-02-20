@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="85911003-abce-4c87-9044-a15e662ecc24" name="Default Changelist" comment="">
+    <list default="true" id="85911003-abce-4c87-9044-a15e662ecc24" name="Default Changelist" comment="Приложение для поиска потеянных банковских карт.&#10;&#10;Добавлина валидация при вводе данных о карте">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/cards/editCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/cards/editCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/myCards/myCards.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/myCards/myCards.tsx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -121,7 +119,7 @@
       <workItem from="1612883182515" duration="24504000" />
       <workItem from="1612977966078" duration="21597000" />
       <workItem from="1613158764731" duration="33064000" />
-      <workItem from="1613640218183" duration="10823000" />
+      <workItem from="1613640218183" duration="14659000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1612468696911</created>
@@ -228,7 +226,14 @@
       <option name="project" value="LOCAL" />
       <updated>1613575488703</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Приложение для поиска потеянных банковских карт.&#10;&#10;Добавлина валидация при вводе данных о карте">
+      <created>1613651892789</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1613651892789</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -257,6 +262,7 @@
     <MESSAGE value="Приложение для поиска потеянных банковских карт.&#10;&#10;Если нашлась ваша карта, то создается чат с тем кто ее нашел" />
     <MESSAGE value="Приложение для поиска потеянных банковских карт.&#10;&#10;Исправлен баг с дублированием чата при переходи в него из списка с картами." />
     <MESSAGE value="Приложение для поиска потеянных банковских карт.&#10;&#10;Исправлен баг с зависшимися уведовмлением при удалении карты.&#10;Если удалить карту, то исчезает и ее уведомление.&#10;Если в найденных картах нажать на &quot;Вернул карту&quot; или &quot;Удалить&quot;, то карта удалиться в месте с уведомлениями." />
-    <option name="LAST_COMMIT_MESSAGE" value="Приложение для поиска потеянных банковских карт.&#10;&#10;Исправлен баг с зависшимися уведовмлением при удалении карты.&#10;Если удалить карту, то исчезает и ее уведомление.&#10;Если в найденных картах нажать на &quot;Вернул карту&quot; или &quot;Удалить&quot;, то карта удалиться в месте с уведомлениями." />
+    <MESSAGE value="Приложение для поиска потеянных банковских карт.&#10;&#10;Добавлина валидация при вводе данных о карте" />
+    <option name="LAST_COMMIT_MESSAGE" value="Приложение для поиска потеянных банковских карт.&#10;&#10;Добавлина валидация при вводе данных о карте" />
   </component>
 </project>

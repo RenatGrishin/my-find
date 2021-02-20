@@ -1,4 +1,4 @@
-import React, {useContext, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {MyCardsContext, FindCardsContext} from "../../App";
 import {Link} from "react-router-dom";
 import css from "./editCard.module.css";
@@ -7,6 +7,7 @@ function EditCard (props:any){
   const myCard = useContext(MyCardsContext);
   const findCard = useContext(FindCardsContext);
   let showCards:any = {};
+  let [buttonActive, setButtonActive] = useState(false);
 
   let [cardInfo, setCardInfo] = useState({id:0, cardName:'', cardNumb:'', cardMonth:0, cardYear:0});
   const cardIdURL = Number(props.props.match.params.number);
@@ -49,13 +50,21 @@ function EditCard (props:any){
 
     return numbDate;
   }
-  /* Сохранение и добавление данных */
-  function addAndSaveValidation(type:string) {
-    if (cardInfo.cardNumb.length < 19) console.log(`Номер карты введен не полностью`);
-    if (cardInfo.cardName.split(' ').length < 2) console.log(`Поле владельца карты заполнено не полностью`);
-    if (cardInfo.cardMonth === 0) console.log(`Месяц не может быть равено 0`);
-    props.add(cardInfo, props.type)
-  }
+  /* Деактивация кнопки, если валидация не пройдена */
+  useEffect(()=>{
+    if(cardInfo.cardNumb.length < 19){
+      console.log(`Номер карты введен не полностью`);
+      setButtonActive( (prev)=>{ return false } );
+    }else if (cardInfo.cardName.split(' ').length < 2) {
+      console.log(`Поле владельца карты заполнено не полностью`);
+      setButtonActive( (prev)=>{ return false } );
+    } else if (cardInfo.cardMonth === 0) {
+      console.log(`Месяц не может быть равено 0`);
+      setButtonActive( (prev)=>{ return false } );
+    } else {
+      setButtonActive( (prev)=>{ return true } );
+    }
+  },[cardInfo]);
 
   /* Создаем карточку для редактирования */
   function instCardInfo (){
@@ -118,12 +127,19 @@ function EditCard (props:any){
   function getButtons() {
     if (isNaN(cardIdURL)){
       return <div className={css.btn_down}>
-        <Link to={`/${props.type}`}><input className={css.btn_save} type={`submit`} onClick={()=>{ addAndSaveValidation('add')}} value={`Добавить`}/></Link>
+        <Link to={`/${props.type}`}><input className={css.btn_save}
+                                           disabled={buttonActive ? false : true}
+                                           type={`submit`}
+                                           onClick={()=>{ props.add(cardInfo, props.type) }}
+                                           value={`Добавить`}/></Link>
         <Link to={`/${props.type}`}><input className={css.btn_cancel} type={`submit`} value={`Отменить`}/></Link>
       </div>
     }else{
       return <div className={css.btn_down}>
-        <Link to={`/${props.type}`}><input className={css.btn_save} type={`submit`} onClick={()=>{ props.edit(cardInfo, props.type)}} value={`Сохранить`}/></Link>
+        <Link to={`/${props.type}`}><input className={css.btn_save}
+                                           disabled={buttonActive ? false : true}
+                                           type={`submit`} onClick={()=>{ props.edit(cardInfo, props.type)}}
+                                           value={`Сохранить`}/></Link>
         <Link to={`/${props.type}`}><input className={css.btn_cancel} type={`submit`} value={`Отменить`}/></Link>
         <Link to={`/${props.type}`}><input className={css.btn_delete} type={`submit`} onClick={() => {props.delete(cardInfo.id, props.type)}} value={`Удалить`}/></Link>
       </div>
@@ -146,15 +162,21 @@ function EditCard (props:any){
     {getLinks()}
     <div className={css.card}>
       <p>Номер:</p><input type={`text`}
-                          onChange={(e)=>{editInfoCard(e.target.value, `number`)}}
+                          onChange={(e)=>{
+                            editInfoCard(e.target.value, `number`);
+                          }}
                           value={`${cardInfo.cardNumb}`}/> <br/>
 
       <p>Имя Фамилия: </p><input type={`text`}
-                                 onChange={(e)=>{editInfoCard(e.target.value, `name`)}}
+                                 onChange={(e)=>{
+                                   editInfoCard(e.target.value, `name`);
+                                 }}
                                  value={`${cardInfo.cardName}`}/> <br/>
 
       <p>ММ | ГГ </p><input className={css.input_DD_MM} type={`text`}
-                           onChange={(e)=>{editInfoCard(e.target.value, `month`)}}
+                           onChange={(e)=>{
+                             editInfoCard(e.target.value, `month`);
+                           }}
                            value={`${cardInfo.cardMonth}`}/>
       <input className={css.input_DD_MM} type={`text`}
                          onChange={(e)=>{editInfoCard(e.target.value, `year`)}}
