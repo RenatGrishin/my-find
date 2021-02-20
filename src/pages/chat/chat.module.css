@@ -1,3 +1,15 @@
+.chats_list_user{
+    border-radius: 3px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #0A1747;
+}
+.chats_list_user a{
+    color: #0A1747;
+    font-size: 18px;
+    text-decoration: none;
+}
+
 .msg_block{
     position: relative;
     width: 100%;

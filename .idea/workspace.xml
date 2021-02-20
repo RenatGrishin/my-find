@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="85911003-abce-4c87-9044-a15e662ecc24" name="Default Changelist" comment="Приложение для поиска потеянных банковских карт.&#10;&#10;Добавлина валидация при вводе данных о карте">
+    <list default="true" id="85911003-abce-4c87-9044-a15e662ecc24" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/cards/editCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/cards/editCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/cards/editCard.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/cards/editCard.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/chat/chat.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/chat/chat.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/chat/chat.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/chat/chat.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/chat/chatWithUser.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/chat/chatWithUser.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/main/main.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/main/main.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/myCards/myCards.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/myCards/myCards.module.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -119,7 +125,7 @@
       <workItem from="1612883182515" duration="24504000" />
       <workItem from="1612977966078" duration="21597000" />
       <workItem from="1613158764731" duration="33064000" />
-      <workItem from="1613640218183" duration="14659000" />
+      <workItem from="1613640218183" duration="19450000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1612468696911</created>
@@ -233,7 +239,14 @@
       <option name="project" value="LOCAL" />
       <updated>1613651892789</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Приложение для поиска потеянных банковских карт.&#10;&#10;Добавлина валидация при вводе данных карты.&#10;Кнопка &quot;Сохранить&quot; и &quot;Добавить&quot; не активна до тех пор пока не будет пройдена валидация.">
+      <created>1613816301978</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1613816301978</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -263,6 +276,7 @@
     <MESSAGE value="Приложение для поиска потеянных банковских карт.&#10;&#10;Исправлен баг с дублированием чата при переходи в него из списка с картами." />
     <MESSAGE value="Приложение для поиска потеянных банковских карт.&#10;&#10;Исправлен баг с зависшимися уведовмлением при удалении карты.&#10;Если удалить карту, то исчезает и ее уведомление.&#10;Если в найденных картах нажать на &quot;Вернул карту&quot; или &quot;Удалить&quot;, то карта удалиться в месте с уведомлениями." />
     <MESSAGE value="Приложение для поиска потеянных банковских карт.&#10;&#10;Добавлина валидация при вводе данных о карте" />
-    <option name="LAST_COMMIT_MESSAGE" value="Приложение для поиска потеянных банковских карт.&#10;&#10;Добавлина валидация при вводе данных о карте" />
+    <MESSAGE value="Приложение для поиска потеянных банковских карт.&#10;&#10;Добавлина валидация при вводе данных карты.&#10;Кнопка &quot;Сохранить&quot; и &quot;Добавить&quot; не активна до тех пор пока не будет пройдена валидация." />
+    <option name="LAST_COMMIT_MESSAGE" value="Приложение для поиска потеянных банковских карт.&#10;&#10;Добавлина валидация при вводе данных карты.&#10;Кнопка &quot;Сохранить&quot; и &quot;Добавить&quot; не активна до тех пор пока не будет пройдена валидация." />
   </component>
 </project>

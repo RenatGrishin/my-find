@@ -32,8 +32,10 @@ function ChatWithUser(props:any) {
   }
 
   function send() {
-    props.sendMessage(cardIdURL, 1, sendMessage)
-    setSendMessage('');
+    if (sendMessage) {
+      props.sendMessage(cardIdURL, 1, sendMessage)
+      setSendMessage('');
+    }
   }
 
   return<div className={css.chat_area}>

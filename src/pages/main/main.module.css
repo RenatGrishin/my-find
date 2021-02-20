@@ -9,7 +9,7 @@
     ;
 }
 .main div{
-    border: 1px solid #9f9f9f;
+    border: 1px solid #0A1747;
     border-radius: 4px;
     padding: 10px;
     text-align: center;
@@ -17,7 +17,7 @@
 }
 .main div a{
     text-decoration: none;
-    color: #000000;
+    color: #0A1747;
 }
 .main div a:hover{
     color: #9f9f9f;

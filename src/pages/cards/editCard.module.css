@@ -1,22 +1,26 @@
 .card{
     border-radius: 5px;
-    background-color: dimgrey;
+    background-color: #FFFF05;
     padding: 20px;
     color: #fff;
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
 }
 .card p{
+    color: #0A1747;
     margin: 0; padding: 0;
 }
 .card input{
-    padding: 10px;
+    font-size: 18px;
+    padding: 5px;
     border-radius: 3px;
-    border: 1px;
+    border: 1px solid rgba(0,0,0,0.1);
     margin-bottom: 20px;
 }
 input:nth-child(8), input:nth-child(9){margin-bottom: 0}
 .input_DD_MM{
-    width: 15px;
+    width: 22px;
     margin-right: 10px;
+    text-align: center;
 }
 
 .btn_down{
@@ -29,12 +33,18 @@ input:nth-child(8), input:nth-child(9){margin-bottom: 0}
     margin-right: 25px;
     border-radius: 3px;
 }
-.btn_save{
-    background-color: #1FB48F;
+input.btn_save{
+    background-color: #0A1747;
+    color: #D4DBF5;
 }
-.btn_cancel{
-    background-color: #F2C52A;
+input.btn_save[disabled]{
+    opacity: 30%;
 }
-.btn_delete{
-    background-color: #FA545E;
+input.btn_cancel{
+    background-color: #0029FA;
+    color: #D4DBF5;
+}
+input.btn_delete{
+    background-color: #8D07F6;
+    color: #D4DBF5;
 }

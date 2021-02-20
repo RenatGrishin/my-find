@@ -1,13 +1,14 @@
 import React, {useContext} from "react";
 import {ChatContext} from "../../App";
 import {Link} from "react-router-dom";
+import css from "./chat.module.css";
 
 function Chat(props:any) {
   let chat = useContext(ChatContext);
 
   function chatList(id:number, userTwoID:number) {
     let chatUser = props.users.find( (user:any) =>user.id === userTwoID);
-    return<div key={id}>
+    return<div className={css.chats_list_user} key={id}>
       <Link to={`/chat/${id}`}>{chatUser.userFIO}</Link>
     </div>
   }
